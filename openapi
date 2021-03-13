@@ -1,0 +1,432 @@
+---
+openapi: 3.0.3
+info:
+  title: Maps API (development)
+  description: API de testes para MAPS
+  termsOfService: Sem termos de servi�o
+  contact:
+    name: Joel
+    url: http://exampleurl.com/contact
+    email: joelbars@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1-SNAPSHOT
+paths:
+  /ativos:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionPanacheEntityBase'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PanacheEntityBase'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PanacheEntityBase'
+  /ativos/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PanacheEntityBase'
+      responses:
+        "200":
+          description: OK
+    delete:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /contacorrente:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionPanacheEntityBase'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PanacheEntityBase'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PanacheEntityBase'
+  /contacorrente/credito:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountEntry'
+      responses:
+        "200":
+          description: OK
+  /contacorrente/debito:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountEntry'
+      responses:
+        "200":
+          description: OK
+  /contacorrente/saldo:
+    get:
+      parameters:
+      - name: data
+        in: query
+        schema:
+          format: date
+          type: string
+      - name: fim
+        in: query
+        schema:
+          format: date
+          type: string
+      - name: inicio
+        in: query
+        schema:
+          format: date
+          type: string
+      responses:
+        "200":
+          description: OK
+  /contacorrente/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PanacheEntityBase'
+      responses:
+        "200":
+          description: OK
+    delete:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /movimentacao:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionPanacheEntityBase'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PanacheEntityBase'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PanacheEntityBase'
+  /movimentacao/compra:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionEntry'
+      responses:
+        "200":
+          description: OK
+  /movimentacao/{id}:
+    get:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PanacheEntityBase'
+      responses:
+        "200":
+          description: OK
+    delete:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /valormercado:
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarketValueEntry'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketValueEntry'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarketValueEntry'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketValueEntry'
+  /valormercado/{asset}:
+    get:
+      parameters:
+      - name: asset
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: data
+        in: query
+        schema:
+          format: date
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionMarketValueEntry'
+  /valormercado/{id}:
+    delete:
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: data
+        in: query
+        schema:
+          format: date
+          type: string
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+    EntryType:
+      enum:
+      - ENTRADA
+      - SAIDA
+      type: string
+    AccountEntry:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        account:
+          $ref: '#/components/schemas/Account'
+        data:
+          format: date
+          type: string
+        descricao:
+          type: string
+        tipo:
+          $ref: '#/components/schemas/EntryType'
+        valor:
+          format: double
+          type: number
+    PanacheEntityBase:
+      type: object
+    CollectionPanacheEntityBase:
+      type: array
+      items:
+        $ref: '#/components/schemas/PanacheEntityBase'
+    MarketValueEntry:
+      type: object
+      properties:
+        ativo:
+          type: string
+        data:
+          format: date
+          type: string
+        valor:
+          format: double
+          type: number
+    CollectionMarketValueEntry:
+      type: array
+      items:
+        $ref: '#/components/schemas/MarketValueEntry'
+    TransactionEntry:
+      type: object
+      properties:
+        ativo:
+          type: string
+        data:
+          format: date
+          type: string
+        quatidade:
+          format: double
+          type: number
+        valor:
+          format: double
+          type: number
+    AssetType:
+      enum:
+      - FUNDO
+      - RF
+      - RV
+      type: string
+    MarketValue:
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/MarketValueKey'
+        value:
+          type: number
+    ListMarketValue:
+      type: array
+      items:
+        $ref: '#/components/schemas/MarketValue'
+    MarketValueKey:
+      type: object
+      properties:
+        ativo:
+          $ref: '#/components/schemas/Asset'
+        data:
+          format: date
+          type: string
+    Asset:
+      required:
+      - dataEmissao
+      - dataVencimento
+      - tipo
+      type: object
+      properties:
+        dataEmissao:
+          format: date
+          type: string
+          nullable: false
+        dataVencimento:
+          format: date
+          type: string
+          nullable: false
+        nome:
+          pattern: \S
+          type: string
+          nullable: false
+        tipo:
+          allOf:
+          - $ref: '#/components/schemas/AssetType'
+          - nullable: false
+        valores:
+          $ref: '#/components/schemas/ListMarketValue'
+    PanacheEntityBase1:
+      type: object
