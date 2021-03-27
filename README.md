@@ -110,3 +110,5 @@ utilizando GraalVM, para sua execução:
 ``./mvnw clean package -Dquarkus.container-image.build=true``
 
 *_O quarkus possui suporte a criação de imagens Docker (padrão para esse projeto), Jib e S2I_.
+
+## Commentarios
