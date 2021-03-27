@@ -5,7 +5,7 @@ on:
     branches:
       - master
   pull_request:
-      types: [openede, reopened]
+      types: [opened, reopened]
 
 jobs:
   codacy-analysis-cli:
